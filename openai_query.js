@@ -5,6 +5,7 @@ const apiKey = process.env.OPENAPI
 
 async function generateCompletion(userInput) {
   try {
+    console.log('User input:', userInput);
     if (!userInput) {
       throw new Error('User input is required');
     }
@@ -25,7 +26,7 @@ async function generateCompletion(userInput) {
     });
 
     console.log('Response:', response.data.choices[0].message.content);
-    return response.data;
+    return response.data.choices[0].message;
   } catch (error) {
     console.error('Error making request:', error.message);
     throw error;

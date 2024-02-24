@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { generateCompletion } = require('./openai query')
+const { generateCompletion } = require('./openai_query')
 require('dotenv').config();
 const apiUrl = 'https://api.apyhub.com/extract/text/pdf-url';
 const apyToken = process.env.PDF;
@@ -17,8 +17,8 @@ const extractPdfText = async (pdfUrl) => {
 
     const response = await fetch(apiUrl, options);
     const jsonResponse = await response.json();
+    console.log('response', jsonResponse)
 
-    // Assuming the extracted text is available in the pdfText property
     const pdfText = jsonResponse.data;
 
     // Pass the extracted text to generateCompletion and return its response
