@@ -7,7 +7,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.post('/extract-pdf', async (req, res) => {
   try {
     const pdfUrl = req.body.url;

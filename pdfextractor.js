@@ -1,7 +1,8 @@
 const fetch = require('node-fetch');
-const {generateCompletion}=require('./openai query')
+const { generateCompletion } = require('./openai query')
+require('dotenv').config();
 const apiUrl = 'https://api.apyhub.com/extract/text/pdf-url';
-const apyToken = '';
+const apyToken = process.env.PDF;
 
 const extractPdfText = async (pdfUrl) => {
   try {
